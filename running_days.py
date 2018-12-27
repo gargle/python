@@ -8,7 +8,7 @@ print("year  total  ja fe ma ap ma ju ju au se oc no de")
 for year in range(2009,2039):
     running_days = []
     for month in range(1,13):
-        (first_day, total_days) = monthrange(year,month)
+        first_day, total_days = monthrange(year,month)
         running_days.append(sum(list(map(lambda y: 1+(total_days-y)//7,
                                       map(lambda x: 7 if (x==0) else x,
                                           [(8-first_day)%7,  # first monday
