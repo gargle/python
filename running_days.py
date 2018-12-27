@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-from datetime import date
 from calendar import isleap,monthrange
 
 # calculate the number of running days for a year (mondays, wednesday and fridays)
