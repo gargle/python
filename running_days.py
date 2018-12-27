@@ -5,7 +5,7 @@ from calendar import isleap,monthrange
 
 # calculate the number of running days for a year (mondays, wednesday and fridays)
 
-print("year  total  jan feb mar apr may jun jul aug sep oct nov dec")
+print("year  total  ja fe ma ap ma ju ju au se oc no de")
 for year in range(2009,2039):
     running_days = []
     for month in range(1,13):
@@ -19,5 +19,5 @@ for year in range(2009,2039):
                                       )))))
     print("%4d   %3d  " % (year, sum(running_days)),end='')
     for month in range(0,12):
-        print("  %2d" % running_days[month], end='')
+        print(" %2d" % running_days[month], end='')
     print("")
