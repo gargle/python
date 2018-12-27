@@ -5,6 +5,7 @@ from calendar import isleap
 
 # calculate the number of running days for a year (mondays, wednesday and fridays)
 
+print("year total")
 for year in range(2009,2039):
     first_day = date(year,1,1).weekday()
     running_days = sum(list(map(lambda y: 1+((366 if isleap(year) else 365)-y)//7,
@@ -14,4 +15,4 @@ for year in range(2009,2039):
                                      (12-first_day)%7  # first friday
                                     ]
                                 ))))
-    print(year, running_days)
+    print("%4d  %3d" % (year, running_days))
