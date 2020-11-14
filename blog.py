@@ -8,7 +8,8 @@ url = feedparser.parse('/tmp/blog-11-14-2020.xml')
 
 totals = {}
 for item in url.entries:
-    if item.title.startswith("Machelen"):
+    if re.search(r'^(Machelen|Berbroek)', item.title):
+    #if item.title.startswith("Machelen"):
         match = re.search(r'\d{4}-\d{2}-\d{2}', item.published)
         date = datetime.datetime.strptime(match.group(), '%Y-%m-%d').date()
         indexym = "%04d/%02d" % (date.year,date.month)
@@ -36,8 +37,8 @@ for item in url.entries:
 
 print("year count distance  km/h.")
 for year in sorted(totals):
-#    if "/" in  year:
-#        continue
+    if "/" in  year:
+        continue
     print("%-7s  %3d   %7.2f %6.2f" % (year,totals[year]['count'],
                                       totals[year]['km'],
                                       totals[year]['speed']/totals[year]['count']))
