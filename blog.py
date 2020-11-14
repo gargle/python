@@ -1,19 +1,19 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 import feedparser
 import re
 import datetime
 
-url = feedparser.parse('/tmp/blog-02-01-2019.xml')
+url = feedparser.parse('/tmp/blog-11-14-2020.xml')
 
 totals = {}
 for item in url.entries:
-    if item.title.encode('utf-8').startswith('Machelen'):
-        match = re.search(r'\d{4}-\d{2}-\d{2}', item.published.encode('utf-8'))
+    if item.title.startswith("Machelen"):
+        match = re.search(r'\d{4}-\d{2}-\d{2}', item.published)
         date = datetime.datetime.strptime(match.group(), '%Y-%m-%d').date()
         indexym = "%04d/%02d" % (date.year,date.month)
         index   = "%04d" % (date.year)
-        content = item.content[0]['value'].encode('utf-8')
+        content = item.content[0]['value']
         match = re.search(r'(\d+[.,]?\d*)\skm', content)
         distance = float(match.group(1))
         match = re.search(r',\s(\d+[.,]?\d*)\skm\/h\.', content)
