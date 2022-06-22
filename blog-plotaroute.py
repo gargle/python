@@ -4,7 +4,7 @@ import feedparser
 import re
 import datetime
 
-url = feedparser.parse('/tmp/blog-06-18-2022.xml')
+url = feedparser.parse('/tmp/blog-06-22-2022.xml')
 
 totals = {}
 for item in url.entries:
@@ -34,6 +34,10 @@ for item in url.entries:
             totals[index]['count'] = totals[index]['count'] + 1
         else:
             totals[index] = { 'km': distance, 'speed': speed, 'count': 1 }
+        match = re.search(r'(https?:\/\/www\.plotaroute\.com\/route\/\d+)(\?units=km)?(")', content)
+        if match is not None:
+            if match.group(2) is None:
+                print(date)
 
 print("year count distance  km/h.")
 for year in sorted(totals):
