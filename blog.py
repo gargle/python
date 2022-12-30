@@ -4,7 +4,7 @@ import feedparser
 import re
 import datetime
 
-url = feedparser.parse('/tmp/blog-06-18-2022.xml')
+url = feedparser.parse('/tmp/blog-12-30-2022.xml')
 
 totals = {}
 for item in url.entries:
@@ -39,6 +39,7 @@ print("year count distance  km/h.")
 for year in sorted(totals):
     if "/" in  year:
         continue
-    print("%-7s  %3d   %7.2f %6.2f" % (year,totals[year]['count'],
+    print("%-7s  %3d   %7.2f %6.2f %6.2f" % (year,totals[year]['count'],
                                       totals[year]['km'],
-                                      totals[year]['speed']/totals[year]['count']))
+                                      totals[year]['speed']/totals[year]['count'],
+                                      totals[year]['km']/totals[year]['count']))
