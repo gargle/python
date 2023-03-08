@@ -23,9 +23,8 @@ for item in url.entries:
             continue
         if published.date().month != 12:
             continue
+        print(published.date())
         content = item.content[0]["value"]
-        match = re.search(r"https?:\/\/www\.plotaroute\.com\/route\/(\d+)", content)
-        #print(published.date(), match.group(1))
         match = re.search(r"(\d+[.,]?\d*)\skm", content)
         distance = float(match.group(1)) * 1000
         match = re.search(r",\s(\d+)h(\d+)m(\d+)s?,", content)
@@ -71,7 +70,7 @@ for item in url.entries:
                     if match is None:
                         continue
                     else:
-                        totalTimeSeconds = float(match.group(1))
+                        totalTimeSeconds = int(float(match.group(1)))
                 match = re.search(r"^<Trackpoint>$", line)
                 if match is not None:
                     f.write("<Trackpoint>" + "\n")
